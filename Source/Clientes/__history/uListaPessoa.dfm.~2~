@@ -1,0 +1,9 @@
+inherited FrmListaPessoa: TFrmListaPessoa
+  Width = 779
+  Height = 388
+  ExplicitWidth = 779
+  ExplicitHeight = 388
+  PixelsPerInch = 96
+  DesignLeft = 2
+  DesignTop = 2
+end

@@ -1,0 +1,19 @@
+program ProjetoERPIntraweb;
+
+uses
+  FastMM4,
+  IWRtlFix,
+  IWJclStackTrace,
+  IWJclDebug,
+  IWStartHSys,
+  uBase in '..\Source\base\uBase.pas' {FrmBase: TIWAppForm},
+  ServerController in 'ServerController.pas' {IWServerController: TIWServerControllerBase},
+  UserSessionUnit in 'UserSessionUnit.pas' {IWUserSession: TIWUserSessionBase},
+  Unit1 in 'Unit1.pas' {IWForm1: TIWAppForm},
+  uFrmLogin in '..\Source\uFrmLogin.pas' {FrmLogin: TIWAppForm};
+
+{$R *.res}
+
+begin
+  TIWStartHSys.Execute(True);
+end.

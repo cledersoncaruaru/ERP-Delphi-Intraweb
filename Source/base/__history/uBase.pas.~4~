@@ -1,0 +1,44 @@
+unit uBase;
+
+interface
+
+uses
+  Classes, SysUtils, IWAppForm, IWApplication, IWColor, IWTypes, IWVCLComponent,
+  IWBaseLayoutComponent, IWBaseContainerLayout, IWContainerLayout,
+  IWTemplateProcessorHTML;
+
+type
+  TFrmBase = class(TIWAppForm)
+    TPS: TIWTemplateProcessorHTML;
+    procedure IWAppFormCreate(Sender: TObject);
+  public
+  end;
+
+implementation
+
+{$R *.dfm}
+
+
+procedure TFrmBase.IWAppFormCreate(Sender: TObject);
+begin
+
+  if self.Name = 'FrmLogin' then begin
+
+     TPS.Templates.Default := '/FrmLogin.html';
+
+  end else begin
+
+    TPS.MasterTemplate          := '/master.html';
+     TPS.Templates.Default       := '/'+self.Name+'.html';
+
+  end;
+
+
+
+
+end;
+
+initialization
+  TFrmBase.SetAsMainForm;
+
+end.

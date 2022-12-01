@@ -1,0 +1,92 @@
+unit uBase;
+
+interface
+
+uses
+  Classes, SysUtils, IWAppForm, IWApplication, IWColor, IWTypes, IWVCLComponent,
+  IWBaseLayoutComponent, IWBaseContainerLayout, IWContainerLayout,
+  IWTemplateProcessorHTML,System.StrUtils;
+
+type
+  TFrmBase = class(TIWAppForm)
+    TPS: TIWTemplateProcessorHTML;
+    procedure IWAppFormCreate(Sender: TObject);
+  public
+
+  Procedure Menu(EventParams: TStringList);
+
+
+  end;
+
+implementation
+
+{$R *.dfm}
+
+uses uFrmDashBoard, uFrmLogin;
+
+
+procedure TFrmBase.IWAppFormCreate(Sender: TObject);
+begin
+
+  if self.Name = 'FrmLogin' then begin
+
+     TPS.Templates.Default := '/FrmLogin.html';
+
+  end else begin
+
+    TPS.MasterTemplate          := '/master.html';
+     TPS.Templates.Default       := '/'+self.Name+'.html';
+
+  end;
+
+
+
+
+end;
+
+
+procedure TFrmBase.Menu(EventParams: TStringList);
+var
+ vFormname, Page : string;
+begin
+
+
+  Page  := EventParams.Values['page'];
+
+
+  case AnsiIndexStr(Page,['']) of
+
+   0 : vFormname := 'FRMLOGIN';
+   1 : vFormname := 'FRMDASHBOARD';
+
+  end;
+
+
+   if (UpperCase(WebApplication.ActiveForm.Name) = vFormname) then
+   exit;
+
+   self.Release;
+
+
+
+    case AnsiIndexStr(Page,['']) of
+
+
+
+     0 : begin
+
+         WebApplication.ShowForm(Tfrm)
+
+         end;
+
+
+
+
+    end;
+
+
+
+
+end;
+
+end.

@@ -1,0 +1,31 @@
+unit uListaPessoa;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uBase, IWVCLComponent,
+  IWBaseLayoutComponent, IWBaseContainerLayout, IWContainerLayout,
+  IWTemplateProcessorHTML, IWCompButton, IWCompEdit, IWVCLBaseControl,
+  IWBaseControl, IWBaseHTMLControl, IWControl, IWCompListbox;
+
+type
+  TFrmListaPessoa = class(TFrmBase)
+    TIPO_PESQUISA: TIWComboBox;
+    EDIT_PESQUISA: TIWEdit;
+    BTN_PESQUISAR: TIWButton;
+    BTN_LIMPAR: TIWButton;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FrmListaPessoa: TFrmListaPessoa;
+
+implementation
+
+{$R *.dfm}
+
+end.
