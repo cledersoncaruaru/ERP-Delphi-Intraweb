@@ -1,0 +1,18 @@
+unit DataBase.Entity.Pessoa;
+
+interface
+
+uses
+ Phoenix.Integracao.Telegram,
+ IWServerController,
+ System.SysUtils, System.Classes;
+
+
+
+
+
+
+
+implementation
+
+end.

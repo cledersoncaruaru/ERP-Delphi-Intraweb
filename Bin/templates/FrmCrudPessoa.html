@@ -61,17 +61,19 @@
 
                     <div class="col-md-2">
                       <label for="inputName5" class="form-label">Código</label>
-                    {%CODIGO%}
+                    {%COD_PESSOA%}
                     </div>
 
 
                     <div class="col-md-4">
                       <label for="inputState" class="form-label">Status</label>
-                      <select id="inputState" class="form-select">
+                      <!-- <select id="inputState" class="form-select">
                         <option selected>Selecione o status...</option>
                         <option>aberto </option>
                         <option>Fechado </option>
-                      </select>
+                      </select> -->
+
+                      {%COD_STATUS%}
                     </div>
 
 
@@ -81,14 +83,14 @@
 
               <div class="col-md-12">
                 <label for="inputName5" class="form-label">Nome</label>
-                <input type="text" class="form-control" id="inputName5">
+                {%PES_RAZAO%}
               </div>
                  
 
                <div class="row">
                 <div class="col-2">
                   <label for="inputAddress2" class="form-label">Cep</label>
-                  <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+                  {%PES_CEP%}
                 </div>
                </div>
 
@@ -100,27 +102,27 @@
              
               <div class="col-md-10">
                 <label for="inputEmail5" class="form-label">Endereço</label>
-                <input type="email" class="form-control" id="inputEmail5">
+                {%PES_LOGRADOURO%}
               </div>
              
               <div class="col-md-2">
                 <label for="inputPassword5" class="form-label">Número</label>
-                <input type="password" class="form-control" id="inputPassword5">
+                {%PES_NUMERO%}
               </div>
              
               <div class="col-8">
                 <label for="inputAddress5" class="form-label">Bairro</label>
-                <input type="text" class="form-control" id="inputAddres5s" placeholder="1234 Main St">
+                {%PES_BAIRRO%}
               </div>
              
               <div class="col-4">
                 <label for="inputAddress2" class="form-label">Cidade</label>
-                <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor">
+                {%PES_CIDADE%}
               </div>
             
               <div class="col-md-3">
                 <label for="inputCity" class="form-label">WhatsApp</label>
-                <input type="text" class="form-control" id="inputCity">
+                {%PES_WHATSAPP%}
               </div>
            
   
@@ -128,8 +130,9 @@
     
              
               <div class="text-center">
-                <button type="button" class="btn btn-primary">Salvar</button>
+                <button type="button" class="btn btn-primary" id="BTN_POST">Salvar</button>
                 <button type="button" class="btn btn-danger" id="BTN_CANCEL">Cancelar</button>
+            
               </div>
            
            
@@ -161,6 +164,9 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+
+
+
 
 </body>
 

@@ -6,104 +6,115 @@ inherited FrmCrudPessoa: TFrmCrudPessoa
   PixelsPerInch = 96
   DesignLeft = 2
   DesignTop = 2
-  object CODIGO: TIWEdit [0]
+  object COD_PESSOA: TIWEdit [0]
     Left = 24
     Top = 72
     Width = 113
     Height = 21
     Css = 'form-control'
     StyleRenderOptions.RenderBorder = False
-    FriendlyName = 'CODIGO'
+    Editable = False
+    FriendlyName = 'COD_PESSOA'
     SubmitOnAsyncEvent = True
-    Text = 'CODIGO'
+    Enabled = False
   end
-  object STATUS: TIWComboBox [1]
+  object COD_STATUS: TIWComboBox [1]
     Left = 143
     Top = 72
     Width = 121
     Height = 21
     Css = 'form-select'
     StyleRenderOptions.RenderBorder = False
-    ItemIndex = -1
-    FriendlyName = 'STATUS'
+    ItemIndex = 1
+    Items.Strings = (
+      'Ativo'
+      'Cancelado')
+    FriendlyName = 'COD_STATUS'
     NoSelectionText = '-- No Selection --'
   end
-  object NOME: TIWEdit [2]
+  object PES_RAZAO: TIWEdit [2]
     Left = 24
     Top = 99
     Width = 609
     Height = 21
+    OnHTMLTag = PES_RAZAOHTMLTag
     Css = 'form-control'
     StyleRenderOptions.RenderBorder = False
-    FriendlyName = 'NOME'
+    FriendlyName = 'PES_RAZAO'
     SubmitOnAsyncEvent = True
-    Text = 'NOME'
+    DataTypeOptions.StringCase = scUppercase
   end
-  object ENDERECO: TIWEdit [3]
+  object PES_LOGRADOURO: TIWEdit [3]
     Left = 24
     Top = 151
     Width = 369
     Height = 21
+    OnHTMLTag = PES_LOGRADOUROHTMLTag
     Css = 'form-control'
     StyleRenderOptions.RenderBorder = False
-    FriendlyName = 'ENDERECO'
+    FriendlyName = 'PES_LOGRADOURO'
     SubmitOnAsyncEvent = True
-    Text = 'ENDE'#199'O'
+    DataTypeOptions.StringCase = scUppercase
   end
-  object NUMERO: TIWEdit [4]
+  object PES_NUMERO: TIWEdit [4]
     Left = 399
     Top = 151
     Width = 58
     Height = 21
+    OnHTMLTag = PES_NUMEROHTMLTag
     Css = 'form-control'
     StyleRenderOptions.RenderBorder = False
-    FriendlyName = 'NUMERO'
+    FriendlyName = 'PES_NUMERO'
     SubmitOnAsyncEvent = True
-    Text = 'NUMERO'
+    DataTypeOptions.StringCase = scUppercase
   end
-  object BAIRRO: TIWEdit [5]
+  object PES_BAIRRO: TIWEdit [5]
     Left = 24
     Top = 178
     Width = 369
     Height = 21
+    OnHTMLTag = PES_BAIRROHTMLTag
     Css = 'form-control'
     StyleRenderOptions.RenderBorder = False
-    FriendlyName = 'BAIRRO'
+    FriendlyName = 'PES_BAIRRO'
     SubmitOnAsyncEvent = True
-    Text = 'BAIRRO'
+    DataTypeOptions.StringCase = scUppercase
   end
-  object CIDADE: TIWEdit [6]
+  object PES_CIDADE: TIWEdit [6]
     Left = 399
     Top = 178
     Width = 234
     Height = 21
+    OnHTMLTag = PES_CIDADEHTMLTag
     Css = 'form-control'
     StyleRenderOptions.RenderBorder = False
-    FriendlyName = 'CIDADE'
+    FriendlyName = 'PES_CIDADE'
     SubmitOnAsyncEvent = True
-    Text = 'CIDADE'
+    DataTypeOptions.StringCase = scUppercase
   end
-  object CEP: TIWEdit [7]
+  object PES_CEP: TIWEdit [7]
     Left = 24
     Top = 126
     Width = 114
     Height = 21
+    OnHTMLTag = PES_CEPHTMLTag
     Css = 'form-control'
     StyleRenderOptions.RenderBorder = False
-    FriendlyName = 'CEP'
+    FriendlyName = 'PES_CEP'
     SubmitOnAsyncEvent = True
-    Text = 'CEP'
+    DataTypeOptions.StringCase = scUppercase
   end
-  object WHATSAPP: TIWEdit [8]
+  object PES_WHATSAPP: TIWEdit [8]
     Left = 24
     Top = 205
     Width = 137
     Height = 21
+    OnHTMLTag = PES_WHATSAPPHTMLTag
     Css = 'form-control'
     StyleRenderOptions.RenderBorder = False
-    FriendlyName = 'WHATSAPP'
+    FriendlyName = 'PES_WHATSAPP'
     SubmitOnAsyncEvent = True
-    Text = 'WHATSAPP'
+    DataTypeOptions.StringCase = scUppercase
   end
   object OBS: TIWMemo [9]
     Left = 24
@@ -129,6 +140,7 @@ inherited FrmCrudPessoa: TFrmCrudPessoa
     Caption = 'GRAVAR'
     Color = clBtnFace
     FriendlyName = 'BTN_POST'
+    OnAsyncClick = BTN_POSTAsyncClick
   end
   object BTN_CANCEL: TIWButton [11]
     Left = 313

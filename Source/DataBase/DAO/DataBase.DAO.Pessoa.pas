@@ -5,10 +5,12 @@ interface
 uses
   System.Classes,
   System.StrUtils,
+  DataBase.Entity.Pessoa,
+  DataBase.Funcoes,
   Integracao.Telegram;
 
 Procedure Get_Lista_Pessoa(FiltrarPor:Longint; aParams: TStrings; out aResult: String);
-
+function  Set_Pessoa (Pessoa:TPessoa; var vResult:String):Boolean;
 
 
 
@@ -137,6 +139,82 @@ begin
 
 end;
 
+function  Set_Pessoa (Pessoa:TPessoa; var vResult:String):Boolean;
+var
+Qry  : TFDQuery;
+begin
+
+  Result := False;
+
+
+  try
+
+   try
+
+    Qry             := TFDQuery.Create(Nil);
+    Qry.Connection  := UserSession.Conexao;
+
+
+    Qry.Close;
+    Qry.SQL.Clear;
+    Qry.SQL.Add('Select * from PESSOA where COD_PESSOA =:COD_PESSOA');
+    Qry.ParamByName('COD_PESSOA').AsInteger   := Pessoa.COD_PESSOA;
+    Qry.Open();
+
+
+      if Pessoa.COD_PESSOA = 0 then begin
+
+        Qry.Append;
+
+        Set_AjusteGenerator('COD_PESSOA','COD_PESSOA','PESSOA');
+        Pessoa.COD_PESSOA                       := Get_ReturnNextCOD('COD_PESSOA');
+        vResult := 'Cadastro Nº '+Pessoa.COD_PESSOA.ToString+'Realizado com Sucesso';
+
+      end else begin
+
+        Qry.Edit;
+
+        Qry.FieldByName('COD_PESSOA').AsInteger  := Pessoa.COD_PESSOA;
+
+        vResult := 'Cliente/Fornecedor de Nº'+Pessoa.COD_PESSOA.ToString+' Realizada Com Sucesso';
+
+      end;
+
+
+      Qry.FieldByName('COD_PESSOA').AsInteger            := Pessoa.COD_PESSOA;
+      Qry.FieldByName('COD_STATUS').AsInteger            := Pessoa.COD_STATUS;
+      Qry.FieldByName('PES_RAZAO').AsString              := Pessoa.PES_RAZAO;
+      Qry.FieldByName('PES_CEP').AsString                := Pessoa.PES_CEP;
+      Qry.FieldByName('PES_LOGRADOURO').AsString         := Pessoa.PES_LOGRADOURO;
+      Qry.FieldByName('PES_NUMERO').AsString             := Pessoa.PES_NUMERO;
+      Qry.FieldByName('PES_BAIRRO').AsString             := Pessoa.PES_BAIRRO;
+      Qry.FieldByName('PES_CIDADE').AsString             := Pessoa.PES_CIDADE;
+      Qry.FieldByName('PES_WHATSAPP').AsString           := Pessoa.PES_WHATSAPP;
+      Qry.Post;
+      Result := True;
+
+
+
+
+   except on E: Exception do
+
+
+   Telegram_Send('*** ERROR DataBase.Dao.Pessoa Set_Pessoa'+sLineBreak+
+                e.Message);
+
+   end;
+
+
+
+  finally
+
+  Qry.Free;
+
+  end;
+
+
+
+end;
 
 
 

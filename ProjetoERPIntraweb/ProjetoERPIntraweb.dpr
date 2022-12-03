@@ -15,7 +15,9 @@ uses
   DataBase.DAO.Pessoa in '..\Source\DataBase\DAO\DataBase.DAO.Pessoa.pas',
   DataBase.BD.Funcoes in '..\Source\DataBase\DataBase.BD.Funcoes.pas',
   uFrmCrudPessoa in '..\Source\Pessoa\uFrmCrudPessoa.pas' {FrmCrudPessoa: TIWAppForm},
-  Integracao.Telegram in '..\Source\Integracoes\Integracao.Telegram.pas';
+  Integracao.Telegram in '..\Source\Integracoes\Integracao.Telegram.pas',
+  DataBase.Entity.Pessoa in '..\Source\DataBase\ENTITY\DataBase.Entity.Pessoa.pas',
+  DataBase.Funcoes in '..\Source\Funcoes\DataBase.Funcoes.pas';
 
 {$R *.res}
 
