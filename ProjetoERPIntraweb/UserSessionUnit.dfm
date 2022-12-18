@@ -7,7 +7,7 @@ object IWUserSession: TIWUserSession
     Params.Strings = (
       
         'Database=Z:\IntraWeb\Cursos\ERPIntraweb\Bin\Files\Clientes\00000' +
-        '000000000\BD\DADOS'
+        '000000000\BD\DADOS.fdb'
       'User_Name=SYSDBA'
       'Password=masterkey'
       'Protocol=TCPIP'

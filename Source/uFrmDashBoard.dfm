@@ -2,7 +2,7 @@ inherited FrmDashBoard: TFrmDashBoard
   PixelsPerInch = 96
   DesignLeft = 2
   DesignTop = 2
-  object BTN_JS: TIWButton [0]
+  object BTN_JS: TIWButton [2]
     Left = 80
     Top = 104
     Width = 120
@@ -12,7 +12,7 @@ inherited FrmDashBoard: TFrmDashBoard
     FriendlyName = 'BTN_JS'
     OnAsyncClick = BTN_JSAsyncClick
   end
-  object TOTAL_VENDAS: TIWLabel [1]
+  object TOTAL_VENDAS: TIWLabel [3]
     Left = 34
     Top = 168
     Width = 101
@@ -22,7 +22,7 @@ inherited FrmDashBoard: TFrmDashBoard
     Caption = 'TOTAL_VENDAS'
     RawText = True
   end
-  object TOTAL_VENDAS_PERCT: TIWLabel [2]
+  object TOTAL_VENDAS_PERCT: TIWLabel [4]
     Left = 34
     Top = 191
     Width = 147

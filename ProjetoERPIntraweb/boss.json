@@ -1,8 +1,8 @@
 {
-	"name": "Delphi + IntraWeb",
+	"name": "ProjetoERPIntraweb",
 	"description": "",
 	"version": "1.0.0",
-	"homepage": "www.atozed.com",
+	"homepage": "",
 	"mainsrc": "./",
 	"projects": [],
 	"dependencies": {
