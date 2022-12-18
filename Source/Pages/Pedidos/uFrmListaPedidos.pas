@@ -14,7 +14,8 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uBase, IWVCLComponent,
   IWBaseLayoutComponent, IWBaseContainerLayout, IWContainerLayout,
   IWTemplateProcessorHTML, IWVCLBaseControl, IWBaseControl, IWBaseHTMLControl,
-  IWControl, IWCompButton, IWCompEdit, IWCompListbox;
+  IWControl, IWCompButton, IWCompEdit, IWCompListbox, IWCompMemo, IWCompLabel,
+  IWHTMLTag;
 
 type
   TFrmListaPedidos = class(TFrmBase)
@@ -24,17 +25,29 @@ type
     BTN_LIMPAR: TIWButton;
     DATAINI: TIWEdit;
     DATAFIM: TIWEdit;
+    IWLabel1: TIWLabel;
+    IMP_TIPO_IMPRESSAO: TIWComboBox;
+    IMP_WHATSAPP: TIWEdit;
+    IMP_EMAIL: TIWEdit;
+    IMP_MSG: TIWMemo;
+    BTN_IMPRIMIR: TIWButton;
+    BTN_WHATSAPP: TIWButton;
     procedure IWAppFormCreate(Sender: TObject);
     procedure BTN_LIMPARAsyncClick(Sender: TObject; EventParams: TStringList);
     procedure DATAINIAsyncExit(Sender: TObject; EventParams: TStringList);
     procedure DATAFIMAsyncExit(Sender: TObject; EventParams: TStringList);
     procedure BTN_PESQUISARAsyncClick(Sender: TObject;
       EventParams: TStringList);
+    procedure IMP_WHATSAPPHTMLTag(ASender: TObject; ATag: TIWHTMLTag);
+    procedure IMP_EMAILHTMLTag(ASender: TObject; ATag: TIWHTMLTag);
+    procedure IMP_MSGHTMLTag(ASender: TObject; ATag: TIWHTMLTag);
+    procedure BTN_WHATSAPPAsyncClick(Sender: TObject; EventParams: TStringList);
   private
     { Private declarations }
 
-      vDATAINI : TDate;
-      vDATAFIM : TDate;
+      vDATAINI  : TDate;
+      vDATAFIM  : TDate;
+      aResponse :String;
 
       procedure Prc_Crud(EventParams: TStringList);
       Procedure Listar(aParams: TStrings; out aResult: String);
@@ -73,6 +86,26 @@ begin
 
 end;
 
+procedure TFrmListaPedidos.BTN_WHATSAPPAsyncClick(Sender: TObject;
+  EventParams: TStringList);
+begin
+  inherited;
+
+
+    if  Enviar_Whatsapp(IMP_WHATSAPP.Text,'Pedido Nº'+ IntToStr(UserSession.ID_Cadastro)+IMP_MSG.Lines.Text,aResponse) then
+  begin
+
+    WebApplication.ExecuteJS('$(''#modalimpressao'').modal(''hide'');');
+    WebApplication.ShowMessage('Sua Mensagem do WhatsApp foi Enviada Com Sucesso');
+
+
+  end;
+
+
+
+
+end;
+
 procedure TFrmListaPedidos.DATAFIMAsyncExit(Sender: TObject;
   EventParams: TStringList);
 begin
@@ -85,6 +118,28 @@ procedure TFrmListaPedidos.DATAINIAsyncExit(Sender: TObject;
 begin
   inherited;
   vDATAINI           := StrToDate(DATAINI.Text);
+end;
+
+procedure TFrmListaPedidos.IMP_EMAILHTMLTag(ASender: TObject; ATag: TIWHTMLTag);
+begin
+  inherited;
+  Atag.Add('placeholder=" Informe Seu Email"');
+end;
+
+procedure TFrmListaPedidos.IMP_MSGHTMLTag(ASender: TObject; ATag: TIWHTMLTag);
+begin
+  inherited;
+  Atag.Add('placeholder=" Mensagem ao Cliente "');
+end;
+
+procedure TFrmListaPedidos.IMP_WHATSAPPHTMLTag(ASender: TObject;
+  ATag: TIWHTMLTag);
+begin
+  inherited;
+
+
+  Atag.Add('placeholder=" WhatsApp"');
+
 end;
 
 procedure TFrmListaPedidos.IWAppFormCreate(Sender: TObject);
@@ -101,8 +156,8 @@ begin
 
 
 
-    RegisterCallBack('Pedido',Listar);
-    RegisterCallBack('Crud', Prc_Crud);
+  RegisterCallBack('Pedido',Listar);
+  RegisterCallBack('Crud', Prc_Crud);
 
 
 end;
@@ -120,9 +175,9 @@ begin
 end;
 
 procedure TFrmListaPedidos.Prc_Crud(EventParams: TStringList);
-Var
-aResponse:String;
 begin
+
+    aResponse:='';
 
      if ( StrToIntDef(EventParams.Values['Edit'],-1) > 0)then begin
 
@@ -149,6 +204,18 @@ begin
 
       Exit;
     end;
+
+
+
+
+
+    if ( StrToIntDef(EventParams.Values['Imprimir'],-1) > 0)then begin
+
+      UserSession.ID_Cadastro         := StrToIntDef(EventParams.Values['Imprimir'],-1);
+      WebApplication.ExecuteJS('$(''#modalimpressao'').modal(''show'');');
+
+    end;
+
 
 
 
