@@ -91,16 +91,37 @@ procedure TFrmListaPedidos.BTN_WHATSAPPAsyncClick(Sender: TObject;
 begin
   inherited;
 
-
-    if  Enviar_Whatsapp(IMP_WHATSAPP.Text,'Pedido Nº'+ IntToStr(UserSession.ID_Cadastro)+IMP_MSG.Lines.Text,aResponse) then
-  begin
-
-    WebApplication.ExecuteJS('$(''#modalimpressao'').modal(''hide'');');
-    WebApplication.ShowMessage('Sua Mensagem do WhatsApp foi Enviada Com Sucesso');
+//    WebApplication.ExecuteJS('mensagem(''Aguarde um Momento, Estamos Enviando o Seu Pedido por WhatsApp'');');
 
 
-  end;
 
+      try
+
+    //     todas as verificações
+    //    pegar o codigo do cliente
+    //    pega o nome do cliente
+    //    pega o endereço do cliente
+    //   verifica se o telefone é valido
+
+
+          if  Enviar_Whatsapp(IMP_WHATSAPP.Text,'Pedido Nº'+ IntToStr(UserSession.ID_Cadastro)+IMP_MSG.Lines.Text,aResponse) then
+        begin
+
+          WebApplication.ExecuteJS('$(''#modalimpressao'').modal(''hide'');');
+          WebApplication.ShowMessage('Sua Mensagem do WhatsApp foi Enviada Com Sucesso');
+
+
+        end;
+
+          Sleep(5000);
+
+
+
+      finally
+
+       WebApplication.ExecuteJS('HoldOn.close();');
+
+      end;
 
 
 

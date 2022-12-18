@@ -35,6 +35,10 @@
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
 
+  <link href="assets/Holdon/css/HoldOn.css" rel="stylesheet">
+
+  <script src="assets/Holdon/js/HoldOn.js"></script>
+
 
 
   <!-- =======================================================
@@ -444,8 +448,38 @@
 
 
 
+    function mensagem(msg) {
+
+      var options = {
+        theme: "sk-cube-grid",
+        message: msg,
+        backgroundColor: "#1847B1",
+        textColor: "white"
+      };
+
+      HoldOn.open(options);
 
 
+    };
+
+
+    $("#BTN_WHATSAPP").click(function () {
+      var options = {
+        theme: "sk-rect",
+        message: 'Aguarde Enviando Mensagem Para o WhatsApp... ',
+        backgroundColor: "#000",
+        textColor: "white"
+      };
+
+      HoldOn.open(options);
+    });
+
+
+
+
+
+
+    
 
 
 

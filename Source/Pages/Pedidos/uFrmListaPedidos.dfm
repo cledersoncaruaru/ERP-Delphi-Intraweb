@@ -4,7 +4,7 @@ inherited FrmListaPedidos: TFrmListaPedidos
   ExplicitWidth = 1123
   ExplicitHeight = 475
   PixelsPerInch = 96
-  DesignLeft = -183
+  DesignLeft = 2
   DesignTop = 2
   inherited BTN_POST: TIWButton
     Left = 96
