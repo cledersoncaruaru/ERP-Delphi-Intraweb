@@ -29,10 +29,7 @@ type
     PES_CEP: TIWEdit;
     PES_WHATSAPP: TIWEdit;
     OBS: TIWMemo;
-    BTN_POST: TIWButton;
-    BTN_CANCEL: TIWButton;
-    procedure BTN_CANCELAsyncClick(Sender: TObject; EventParams: TStringList);
-    procedure BTN_POSTAsyncClick(Sender: TObject; EventParams: TStringList);
+
     procedure PES_RAZAOHTMLTag(ASender: TObject; ATag: TIWHTMLTag);
     procedure PES_CEPHTMLTag(ASender: TObject; ATag: TIWHTMLTag);
     procedure PES_LOGRADOUROHTMLTag(ASender: TObject; ATag: TIWHTMLTag);
@@ -58,25 +55,9 @@ implementation
 
 {$R *.dfm}
 
-procedure TFrmCrudPessoa.BTN_CANCELAsyncClick(Sender: TObject;
-  EventParams: TStringList);
-begin
-  inherited;
-
-  WebApplication.ExecuteJS('ajaxCall(''Menu'',''page=lista-pessoa'')');
 
 
-end;
 
-procedure TFrmCrudPessoa.BTN_POSTAsyncClick(Sender: TObject;
-  EventParams: TStringList);
-begin
-  inherited;
-
-  Gravar;
-
-
-end;
 
 procedure TFrmCrudPessoa.Gravar;
 var
@@ -88,17 +69,15 @@ begin
   if Length(PES_RAZAO.Text) <= 0 then begin
 
     PES_RAZAO.SetFocus;
-    WebApplication.ShowMessage('Nome do Cliente Não pode ser vazio Verifique !!!');
-//    WebApplication.ExecuteJS(swalAlert('Atenção','Prezado Usuário é necessário informar o Nome/Razão Social !'));
+    WebApplication.ExecuteJS('mensagem(''Titulo da Mensagem '',''a mensagem que eu quero mostrar'',''success'');');
+//    WebApplication.ExecuteJS('mensagem(''Titulo da Mensagem'',''Texto da Mensagem que eu quero'',''success'');');
+
+
+    //    WebApplication.ShowMessage('Nome do Cliente Não pode ser vazio Verifique !!!');
+
     Exit;
 
   end;
-
-
-
-
-
-
 
 
    try
@@ -130,20 +109,11 @@ begin
      end;
 
 
-
-
-
-
-
-
-
-
    finally
 
    Pessoa.free;
 
    end;
-
 
 
 end;

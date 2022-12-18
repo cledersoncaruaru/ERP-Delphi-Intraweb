@@ -6,7 +6,7 @@ inherited FrmListaPessoa: TFrmListaPessoa
   PixelsPerInch = 96
   DesignLeft = 2
   DesignTop = 2
-  object TIPO_PESQUISA: TIWComboBox [0]
+  object TIPO_PESQUISA: TIWComboBox [2]
     Left = 16
     Top = 67
     Width = 137
@@ -21,7 +21,7 @@ inherited FrmListaPessoa: TFrmListaPessoa
     FriendlyName = 'TIPO_PESQUISA'
     NoSelectionText = '-- No Selection --'
   end
-  object EDIT_PESQUISA: TIWEdit [1]
+  object EDIT_PESQUISA: TIWEdit [3]
     Left = 159
     Top = 67
     Width = 456
@@ -32,7 +32,7 @@ inherited FrmListaPessoa: TFrmListaPessoa
     SubmitOnAsyncEvent = True
     DataTypeOptions.StringCase = scUppercase
   end
-  object BTN_PESQUISAR: TIWButton [2]
+  object BTN_PESQUISAR: TIWButton [4]
     Left = 621
     Top = 62
     Width = 76
@@ -41,7 +41,7 @@ inherited FrmListaPessoa: TFrmListaPessoa
     Color = clBtnFace
     FriendlyName = 'BTN_PESQUISAR'
   end
-  object BTN_LIMPAR: TIWButton [3]
+  object BTN_LIMPAR: TIWButton [5]
     Left = 703
     Top = 63
     Width = 90

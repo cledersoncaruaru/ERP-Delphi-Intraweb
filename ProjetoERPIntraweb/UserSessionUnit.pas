@@ -18,9 +18,19 @@ type
     Conexao: TFDConnection;
     procedure IWUserSessionBaseCreate(Sender: TObject);
   private
+    FID_Cadastro: LongInt;
+    FToken: String;
+    procedure SetID_Cadastro(const Value: LongInt);
+    procedure SetToken(const Value: String);
     { Private declarations }
   public
     { Public declarations }
+
+
+    Property ID_Cadastro    : LongInt read FID_Cadastro write SetID_Cadastro;
+    Property Token          : String read FToken write SetToken;
+
+
   end;
 
 implementation
@@ -35,6 +45,16 @@ begin
 
 
 
+end;
+
+procedure TIWUserSession.SetID_Cadastro(const Value: LongInt);
+begin
+  FID_Cadastro := Value;
+end;
+
+procedure TIWUserSession.SetToken(const Value: String);
+begin
+  FToken := Value;
 end;
 
 end.

@@ -1,0 +1,11 @@
+{
+	"name": "Delphi + IntraWeb",
+	"description": "",
+	"version": "1.0.0",
+	"homepage": "www.atozed.com",
+	"mainsrc": "./",
+	"projects": [],
+	"dependencies": {
+		"https://github.com/viniciussanchez/restrequest4delphi": "^v3.0.19"
+	}
+}

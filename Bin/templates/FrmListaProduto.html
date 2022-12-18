@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Components / Accordion - NiceAdmin Bootstrap Template</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.snow.css" rel="stylesheet">
+  <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
+  <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+
+
+
+  <!-- =======================================================
+  * Template Name: NiceAdmin - v2.4.1
+  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+
+  <style>
+
+    .btn_gravar{
+    
+      text-align: right;
+    
+    }
+    
+    #EDIT_PESQUISA{
+    
+    background-color: rgb(204, 179, 36);
+    
+    }
+    
+    .btn_consulta{
+    
+      padding-top: 15px;
+    
+    }
+    
+    table.table-bordered.dataTable thead tr:first-child th, table.table-bordered.dataTable thead tr:first-child td {
+      border-top-width: 1px;
+      background-color: blue;
+      color: red;
+    }
+    
+    
+    
+    
+    
+    </style>
+
+
+
+</head>
+
+<body>
+
+  <section class="section dashboard">
+
+
+    <div class="row">
+
+      <form>
+
+        <!-- Card with header and footer -->
+        <div class="card">
+          <div class="card-header">Listagem de Produtos</div>
+          <div class="card-body">
+
+            <div class="btn_gravar">
+
+              <button type="button" class="btn btn-primary"
+                onclick="ajaxCall('Menu', 'page=crud-produto')">Cadastrar</button>
+
+            </div>
+
+
+            <h5 class="card-title">Podemos Personalizar Isso Aqui</h5>
+
+
+
+
+            <div class="row">
+
+              <div class="col-md-3">
+                <label for="inputState" class="form-label">Tipo Consulta</label>
+                {%TIPO_PESQUISA%}
+              </div>
+
+
+
+              <div class="col-md-9">
+                <label for="inputCity" class="form-label">Informe os Dados da Consulta</label>
+                {%EDIT_PESQUISA%}
+              </div>
+
+
+              <section class="section dashboard">
+
+
+                <div class="row">
+            
+                  <form>
+
+
+            <div class="btn_consulta" style="text-align: right;">
+              <button type="button" class="btn btn-primary">Pesquisar</button>
+              <button type="button" class="btn btn-secondary" onclick="fncclear();">Limpar</button>
+            </div>
+
+            <hr>
+
+            <div class="row">
+              <div class="col-xs-12 col-sm-2 col-md-2 col-lg-1 col-xl-2">
+                <div class="form-group-cliente">
+                  <label class="label-cliente" for="usr">Exibir</label>
+                  <select class="form-control" name="length_change" id="length_change" onchange="fncChangeDataTable();">
+                    <option selected="" value="10">10</option>
+                    <option value="25">25</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+
+            <hr>
+            <div class="row">
+              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <table id="Lista" class="table table-bordered table-striped table-hover table-sm" style="width: 100%">
+                  <thead>
+                    <tr>
+                      <th>Codigo</th>
+                      <th>Descrição do Produto</th>
+                      <th>EAN</th>                    
+                      <th>Ação</th>
+                    </tr>
+                  </thead>
+                </table>
+              </div>
+            </div>
+
+
+
+          </div>
+          <div class="card-footer">
+            Footer
+          </div>
+        </div><!-- End Card with header and footer -->
+
+      </form>
+
+    </div>
+
+
+  </section>
+
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/chart.js/chart.min.js"></script>
+  <script src="assets/vendor/echarts/echarts.min.js"></script>
+  <script src="assets/vendor/quill/quill.min.js"></script>
+  <script src="assets/vendor/simple-datatables/simple-datatables.js"></script>
+  <script src="assets/vendor/tinymce/tinymce.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+
+
+  <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css"
+    href="https://cdn.datatables.net/v/bs5/dt-1.13.1/af-2.5.1/fc-4.2.1/fh-3.3.1/r-2.4.0/datatables.min.css" />
+   
+  <script type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+  <script type="text/javascript"
+    src="https://cdn.datatables.net/v/bs5/dt-1.13.1/af-2.5.1/fc-4.2.1/fh-3.3.1/r-2.4.0/datatables.min.js"></script>
+
+
+
+
+
+  <script>
+    $(document).ready(function () {
+
+      $('#Lista').DataTable({
+
+
+        dom: 'Bfrtip',
+        buttons: [
+          'copyHtml5',
+          'excelHtml5',
+          'csvHtml5',
+          'pdfHtml5'
+        ],
+
+
+        responsive: true,
+        "pageLength": 10,
+        "language": {
+          "url": "//cdn.datatables.net/plug-ins/1.10.19/i18n/Portuguese-Brasil.json"
+        },
+        columnDefs: [
+          {
+            "targets": 0,
+            "className": "text-center",
+            "width": "15px"
+          },
+
+          {
+            "targets": 1,
+            "className": "text-left",
+            "width": "50px"
+          },
+          {
+            "targets": 2,
+            "className": "text-center",
+            "width": "65px"
+
+          },
+       
+          {
+            "targets": 3,
+            "className": "text-right",
+            "width": "15px"
+
+          }
+
+        ],
+
+        "order": [[1, "asc"]],
+        "paging": true,
+        "ordering": true,
+        "searching": true,
+        serverSide: true,
+        processing: true,
+        ajax: "/$/callback?callback=Produtos"
+
+      });
+
+
+
+
+    });
+
+    function fncChangeDataTable() {
+      var oTable = $('#Lista').DataTable();
+      var oValue = $('#length_change').val();
+      oTable
+        .page
+        .len(oValue)
+        .draw();
+    }
+
+    function fncPsqSearching() {
+      debugger;
+      var oTableS = $('#Lista').DataTable();
+      var oValueS = $('#EDIT_PESQUISA').val();
+      $('#Lista')
+        .DataTable()
+        .search(oValueS)
+        .draw();
+    };
+
+
+    jQuery('#EDIT_PESQUISA').keypress(function (event) {
+
+      var keycode = (event.keyCode ? event.keyCode : event.which);
+      if (keycode == '13') {
+        fncPsqSearching();
+      }
+
+    });
+
+    function fncclear() {
+      debugger;
+      var oTableS = $('#Lista').DataTable();
+      var oValueS = '';
+      $('#Lista')
+        .DataTable()
+        .search(oValueS)
+        .draw();
+
+      $("#EDIT_PESQUISA").val("").change();
+      fncPsqSearching();
+    };
+
+
+    document.getElementById("EDIT_PESQUISA").focus();
+
+
+
+
+
+
+
+
+  </script>
+
+
+
+
+
+
+</body>
+
+</html>

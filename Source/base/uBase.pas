@@ -5,11 +5,14 @@ interface
 uses
   Classes, SysUtils, IWAppForm, IWApplication, IWColor, IWTypes, IWVCLComponent,
   IWBaseLayoutComponent, IWBaseContainerLayout, IWContainerLayout,
-  IWTemplateProcessorHTML,System.StrUtils;
+  IWTemplateProcessorHTML,System.StrUtils, Vcl.Controls, IWVCLBaseControl,
+  IWBaseControl, IWBaseHTMLControl, IWControl, IWCompButton;
 
 type
   TFrmBase = class(TIWAppForm)
     TPS: TIWTemplateProcessorHTML;
+    BTN_POST: TIWButton;
+    BTN_CANCEL: TIWButton;
     procedure IWAppFormCreate(Sender: TObject);
   public
 
@@ -22,7 +25,8 @@ implementation
 
 {$R *.dfm}
 
-uses uFrmDashBoard, uFrmLogin, uListaPessoa, uFrmCrudPessoa;
+uses uFrmDashBoard, uFrmLogin, uListaPessoa, uFrmCrudPessoa, uFrmListaProduto,
+  uFrmCrudProduto, uFrmListaPedidos;
 
 
 procedure TFrmBase.IWAppFormCreate(Sender: TObject);
@@ -58,12 +62,15 @@ begin
   Page  := EventParams.Values['page'];
 
 
-  case AnsiIndexStr(Page,['login','dashboard','lista-pessoa','crud-pessoa']) of
+  case AnsiIndexStr(Page,['login','dashboard','lista-pessoa','crud-pessoa','lista-produto','crud-produto','lista-pedidos']) of
 
    0 : vFormname := 'FRMLOGIN';
    1 : vFormname := 'FRMDASHBOARD';
    2 : vFormname := 'FRMLISTAPESSOA';
    3 : vFormname := 'FRMCRUDPESSOA';
+   4 : vFormname := 'FRMLISTAPRODUTO';
+   5 : vFormname := 'FRMCRUDPRODUTO';
+   6 : vFormname := 'FRMLISTAPEDIDOS';
 
 
 
@@ -77,7 +84,7 @@ begin
 
 
 
-    case AnsiIndexStr(Page,['login','dashboard','lista-pessoa','crud-pessoa']) of
+    case AnsiIndexStr(Page,['login','dashboard','lista-pessoa','crud-pessoa','lista-produto','crud-produto','lista-pedidos']) of
 
 
 
@@ -104,6 +111,26 @@ begin
          WebApplication.ShowForm(TFrmCrudPessoa,True);
 
          end;
+
+     4 : begin
+
+         WebApplication.ShowForm(TFrmListaProduto,True);
+
+         end;
+
+
+     5 : begin
+
+         WebApplication.ShowForm(TFrmCrudProduto,True);
+
+         end;
+
+     6 : begin
+
+         WebApplication.ShowForm(TFrmListaPedidos,True);
+
+         end;
+
 
 
 

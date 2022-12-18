@@ -17,7 +17,16 @@ uses
   uFrmCrudPessoa in '..\Source\Pessoa\uFrmCrudPessoa.pas' {FrmCrudPessoa: TIWAppForm},
   Integracao.Telegram in '..\Source\Integracoes\Integracao.Telegram.pas',
   DataBase.Entity.Pessoa in '..\Source\DataBase\ENTITY\DataBase.Entity.Pessoa.pas',
-  DataBase.Funcoes in '..\Source\Funcoes\DataBase.Funcoes.pas';
+  DataBase.Funcoes in '..\Source\Funcoes\DataBase.Funcoes.pas',
+  uFrmListaProduto in '..\Source\Pages\Produto\uFrmListaProduto.pas' {FrmListaProduto: TIWAppForm},
+  DataBase.Entity.Produto in '..\Source\DataBase\ENTITY\DataBase.Entity.Produto.pas',
+  DataBase.DAO.Produto in '..\Source\DataBase\DAO\DataBase.DAO.Produto.pas',
+  uFrmCrudProduto in '..\Source\Pages\Produto\uFrmCrudProduto.pas' {FrmCrudProduto: TIWAppForm},
+  uFrmListaPedidos in '..\Source\Pages\Pedidos\uFrmListaPedidos.pas' {FrmListaPedidos: TIWAppForm},
+  DataBase.Entity.Pedidos in '..\Source\DataBase\ENTITY\DataBase.Entity.Pedidos.pas',
+  DataBase.DAO.Pedidos in '..\Source\DataBase\DAO\DataBase.DAO.Pedidos.pas',
+  Buttons.Icons in '..\Source\BootsTrap\Componentes\Buttons\Buttons.Icons.pas',
+  Integracao.Whatsapp in '..\Source\Integracoes\Integracao.Whatsapp.pas';
 
 {$R *.res}
 

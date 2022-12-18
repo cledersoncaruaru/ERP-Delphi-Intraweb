@@ -285,14 +285,14 @@
           <i class="bi bi-menu-button-wide"></i><span>Cadastros</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-          <li>
+          <li id="Clientes">
             <!-- <a href="components-alerts.html"> -->
             <a  href="javascript:;" onclick="ajaxCall('Menu', 'page=lista-pessoa')" >  
               <i class="bi bi-circle"></i><span>Clientes</span>
             </a>
           </li>
           <li>
-            <a href="components-accordion.html">
+            <a  href="javascript:;" onclick="ajaxCall('Menu', 'page=lista-produto')" > 
               <i class="bi bi-circle"></i><span>Produtos</span>
             </a>
           </li>
@@ -301,6 +301,13 @@
               <i class="bi bi-circle"></i><span>Grupos</span>
             </a>
           </li>
+
+          <li>
+            <a  href="javascript:;" onclick="ajaxCall('Menu', 'page=lista-pedidos')" > 
+              <i class="bi bi-circle"></i><span>Lista de Pedidos</span>
+            </a>
+          </li>
+
 
 
         </ul>
@@ -370,6 +377,12 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+
+
+
+
+
+
 
 </body>
 
