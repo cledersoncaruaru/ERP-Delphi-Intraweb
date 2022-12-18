@@ -22,6 +22,7 @@ type
     COD_NCM: TIWEdit;
     COD_UNIDADE: TIWComboBox;
     COD_GRUPO: TIWComboBox;
+    PROD_VALOR: TIWEdit;
     procedure IWAppFormCreate(Sender: TObject);
     procedure BTN_CANCELAsyncClick(Sender: TObject; EventParams: TStringList);
     procedure IWAppFormDestroy(Sender: TObject);
@@ -69,6 +70,16 @@ begin
 
 
 
+    if StrToCurrDef(PROD_VALOR.Text,0) <=0 then BEGIN
+
+
+      PROD_VALOR.SetFocus;
+      WebApplication.ExecuteJS('mensagem(''ATENÇÃO '','' Campo Valor Não Preenchido'',''success'');');
+      WebApplication.ExecuteJS('selecionatab();');
+      Exit;
+
+    end;
+
 
      try
 
@@ -92,7 +103,7 @@ begin
 
      except on E: Exception do
 
-
+        WebApplication.ExecuteJS('mensagem(''ATENÇÃO '','' Erro ao Gravar os Produtos' +vResult+',''error'');');
 
      end;
 

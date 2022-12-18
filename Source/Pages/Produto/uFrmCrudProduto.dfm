@@ -3,7 +3,13 @@ inherited FrmCrudProduto: TFrmCrudProduto
   PixelsPerInch = 96
   DesignLeft = 2
   DesignTop = 2
-  object COD_PRODUTO: TIWEdit [0]
+  inherited BTN_POST: TIWButton
+    OnAsyncClick = BTN_POSTAsyncClick
+  end
+  inherited BTN_CANCEL: TIWButton
+    OnAsyncClick = BTN_CANCELAsyncClick
+  end
+  object COD_PRODUTO: TIWEdit [2]
     Left = 40
     Top = 72
     Width = 105
@@ -16,7 +22,7 @@ inherited FrmCrudProduto: TFrmCrudProduto
     Enabled = False
     Text = '0'
   end
-  object PRO_DESCRICAO: TIWEdit [1]
+  object PRO_DESCRICAO: TIWEdit [3]
     Left = 151
     Top = 72
     Width = 430
@@ -27,7 +33,7 @@ inherited FrmCrudProduto: TFrmCrudProduto
     SubmitOnAsyncEvent = True
     DataTypeOptions.StringCase = scUppercase
   end
-  object PRO_COD_BARRA: TIWEdit [2]
+  object PRO_COD_BARRA: TIWEdit [4]
     Left = 587
     Top = 72
     Width = 131
@@ -37,7 +43,7 @@ inherited FrmCrudProduto: TFrmCrudProduto
     FriendlyName = 'PRO_COD_BARRA'
     SubmitOnAsyncEvent = True
   end
-  object COD_NCM: TIWEdit [3]
+  object COD_NCM: TIWEdit [5]
     Left = 294
     Top = 99
     Width = 105
@@ -47,7 +53,7 @@ inherited FrmCrudProduto: TFrmCrudProduto
     FriendlyName = 'COD_NCM'
     SubmitOnAsyncEvent = True
   end
-  object COD_UNIDADE: TIWComboBox [4]
+  object COD_UNIDADE: TIWComboBox [6]
     Left = 40
     Top = 103
     Width = 121
@@ -58,7 +64,7 @@ inherited FrmCrudProduto: TFrmCrudProduto
     FriendlyName = 'COD_UNIDADE'
     NoSelectionText = '-- No Selection --'
   end
-  object COD_GRUPO: TIWComboBox [5]
+  object COD_GRUPO: TIWComboBox [7]
     Left = 167
     Top = 103
     Width = 121
@@ -69,10 +75,14 @@ inherited FrmCrudProduto: TFrmCrudProduto
     FriendlyName = 'COD_GRUPO'
     NoSelectionText = '-- No Selection --'
   end
-  inherited BTN_POST: TIWButton
-    OnAsyncClick = BTN_POSTAsyncClick
-  end
-  inherited BTN_CANCEL: TIWButton
-    OnAsyncClick = BTN_CANCELAsyncClick
+  object PROD_VALOR: TIWEdit [8]
+    Left = 40
+    Top = 195
+    Width = 105
+    Height = 25
+    Css = 'form-control'
+    StyleRenderOptions.RenderBorder = False
+    FriendlyName = 'PROD_VALOR'
+    SubmitOnAsyncEvent = True
   end
 end

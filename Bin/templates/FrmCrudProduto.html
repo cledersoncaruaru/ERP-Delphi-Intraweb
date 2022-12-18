@@ -15,7 +15,9 @@
 
   <!-- Google Fonts -->
   <link href="https://fonts.gstatic.com" rel="preconnect">
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -41,12 +43,12 @@
 </head>
 
 <body>
-  
+
   <!-- <button type="button" class="btn btn-primary">Primary</button> -->
-    
- 
+
+
   <section class="section dashboard">
-   
+
     <div class="row">
 
 
@@ -59,72 +61,125 @@
 
             <!-- Multi Columns Form -->
             <form class="row g-3">
-             
-                  <div class="row">
-
-                    <div class="col-md-2">
-                      <label for="inputName5" class="form-label">Código</label>
-                    {%COD_PRODUTO%}
-                    </div>
 
 
-                    <div class="col-md-4">
-                      <label for="inputState" class="form-label">Status</label>
-                      <!-- <select id="inputState" class="form-select">
+              <div class="row">
+
+                <div class="col-md-2">
+                  <label for="inputName5" class="form-label">Código</label>
+                  {%COD_PRODUTO%}
+                </div>
+
+
+                <div class="col-md-4">
+                  <label for="inputState" class="form-label">Status</label>
+                  <!-- <select id="inputState" class="form-select">
                         <option selected>Selecione o status...</option>
                         <option>aberto </option>
                         <option>Fechado </option>
                       </select> -->
 
-                      {%COD_STATUS%}
-                    </div>
+                  {%COD_STATUS%}
+                </div>
 
 
-                  </div>
+              </div>
 
-                 
+
 
               <div class="col-md-12">
                 <label for="inputName5" class="form-label">Descrição do Produto</label>
                 {%PRO_DESCRICAO%}
               </div>
-                 
 
-               <div class="row">
-                <div class="col-2">
-                  <label for="inputAddress2" class="form-label">EAN</label>
-                  {%PRO_COD_BARRA%}
+
+              <ul class="nav nav-tabs" id="myTab" role="tablist">
+
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link active" id="cad-tab" data-bs-toggle="tab" data-bs-target="#cad" type="button"
+                    role="tab" aria-controls="cad" aria-selected="true">Cadastro</button>
+                </li>
+
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link" id="fiscal-tab" data-bs-toggle="tab" data-bs-target="#fiscal" type="button"
+                    role="tab" aria-controls="fiscal" aria-selected="false">Fiscal</button>
+                </li>
+
+                <li class="nav-item" role="presentation">
+                  <button class="nav-link" id="valor-tab" data-bs-toggle="tab" data-bs-target="#valor" type="button"
+                    role="tab" aria-controls="valor" aria-selected="false">Valores</button>
+                </li>
+
+              </ul>
+              <div class="tab-content" id="cadastros">
+
+
+                <div class="tab-pane fade show active" id="cad" role="tabpanel" aria-labelledby="cad-tab">
+
+
+
+
+                  <div class="row">
+                    <div class="col-2">
+                      <label for="inputAddress2" class="form-label">EAN</label>
+                      {%PRO_COD_BARRA%}
+                    </div>
+                  </div>
+
+                  <div class="col-md-10">
+                    <label for="inputEmail5" class="form-label">Unidade</label>
+                    {%COD_UNIDADE%}
+                  </div>
+
+                  <div class="col-md-2">
+                    <label for="inputPassword5" class="form-label">Grupo</label>
+                    {%COD_GRUPO%}
+                  </div>
+
+                  <div class="col-8">
+                    <label for="inputAddress5" class="form-label">NCM</label>
+                    {%COD_NCM%}
+                  </div>
+
+
+
                 </div>
-               </div>
 
 
-             
-              <div class="col-md-10">
-                <label for="inputEmail5" class="form-label">Unidade</label>
-                {%COD_UNIDADE%}
-              </div>
-             
-              <div class="col-md-2">
-                <label for="inputPassword5" class="form-label">Grupo</label>
-                {%COD_GRUPO%}
-              </div>
-             
-              <div class="col-8">
-                <label for="inputAddress5" class="form-label">NCM</label>
-                {%COD_NCM%}
-              </div>
-             
 
-          
-    
-             
+
+                <div class="tab-pane fade" id="fiscal" role="tabpanel" aria-labelledby="fiscal-tab">...</div>
+
+                <div class="tab-pane fade" id="valor" role="tabpanel" aria-labelledby="valor-tab">
+
+
+
+                  <div class="col-md-3">
+                    <label for="inputName5" class="form-label">Preço de Venda</label>
+                    {%PROD_VALOR%}
+                  </div>
+                </div>
+
+
+              </div>
+
+
+
+
+
+
+
+
+
+
+
               <div class="text-center">
                 <button type="button" class="btn btn-primary" id="BTN_POST">Salvar</button>
                 <button type="button" class="btn btn-danger" id="BTN_CANCEL">Cancelar</button>
-            
+
               </div>
-           
-           
+
+
             </form><!-- End Multi Columns Form -->
 
           </div>
@@ -138,8 +193,8 @@
     </div>
   </section>
 
- 
-   
+
+
 
   <!-- Vendor JS Files -->
   <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
@@ -155,21 +210,29 @@
   <script src="assets/js/main.js"></script>
 
 
-<script>
+  <script>
 
 
 
-function mensagem(title,text,icon){
-  Swal.fire({
-  title: title,
-  text: text,
-  icon: icon,
-  confirmButtonText: 'OK'
-})
+    function mensagem(title, text, icon) {
+      Swal.fire({
+        title: title,
+        text: text,
+        icon: icon,
+        confirmButtonText: 'OK'
+      })
+    };
 
 
 
-};
+    function selecionatab() {
+
+      var someTabTriggerEl = document.querySelector('#valor-tab')
+      var tab = new bootstrap.Tab(someTabTriggerEl)
+
+      tab.show()
+
+    };
 
 
 
@@ -177,7 +240,7 @@ function mensagem(title,text,icon){
 
 
 
-</script>
+  </script>
 
 
 
