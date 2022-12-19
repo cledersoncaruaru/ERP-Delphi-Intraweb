@@ -31,4 +31,33 @@ inherited FrmDashBoard: TFrmDashBoard
     FriendlyName = 'TOTAL_VENDAS_PERCT'
     Caption = 'TOTAL_VENDAS_PERCT'
   end
+  object BTN_API: TIWButton [5]
+    Left = 528
+    Top = 128
+    Width = 120
+    Height = 30
+    Caption = 'BTN_API'
+    Color = clBtnFace
+    FriendlyName = 'BTN_API'
+    OnAsyncClick = BTN_APIAsyncClick
+  end
+  object TOTAL_CLIENTES: TIWLabel [6]
+    Left = 34
+    Top = 214
+    Width = 107
+    Height = 17
+    HasTabOrder = False
+    FriendlyName = 'TOTAL_CLIENTES'
+    Caption = 'TOTAL_CLIENTES'
+  end
+  object grafico_google: TIWLabel [7]
+    Left = 336
+    Top = 104
+    Width = 96
+    Height = 17
+    HasTabOrder = False
+    FriendlyName = 'grafico_google'
+    Caption = 'grafico_google'
+    RawText = True
+  end
 end
