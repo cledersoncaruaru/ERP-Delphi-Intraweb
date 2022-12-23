@@ -161,6 +161,11 @@
         <DCCReference Include="..\Source\DataBase\DAO\DataBase.DAO.Pedidos.pas"/>
         <DCCReference Include="..\Source\BootsTrap\Componentes\Buttons\Buttons.Icons.pas"/>
         <DCCReference Include="..\Source\Integracoes\Integracao.Whatsapp.pas"/>
+        <DCCReference Include="..\Source\Report\uDmReport.pas">
+            <Form>DmReport</Form>
+            <FormType>dfm</FormType>
+            <DesignClass>TDataModule</DesignClass>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
@@ -996,8 +1001,8 @@
                 <ProjectRoot Platform="OSX64" Name="$(PROJECTNAME).app"/>
                 <ProjectRoot Platform="Android64" Name="$(PROJECTNAME)"/>
                 <ProjectRoot Platform="OSXARM64" Name="$(PROJECTNAME).app"/>
-                <ProjectRoot Platform="Win32" Name="$(PROJECTNAME)"/>
                 <ProjectRoot Platform="Android" Name="$(PROJECTNAME)"/>
+                <ProjectRoot Platform="Win32" Name="$(PROJECTNAME)"/>
                 <ProjectRoot Platform="Win64" Name="$(PROJECTNAME)"/>
                 <ProjectRoot Platform="Linux64" Name="$(PROJECTNAME)"/>
                 <ProjectRoot Platform="iOSDevice32" Name="$(PROJECTNAME).app"/>

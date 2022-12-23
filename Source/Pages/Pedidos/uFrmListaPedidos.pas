@@ -15,7 +15,8 @@ uses
   IWBaseLayoutComponent, IWBaseContainerLayout, IWContainerLayout,
   IWTemplateProcessorHTML, IWVCLBaseControl, IWBaseControl, IWBaseHTMLControl,
   IWControl, IWCompButton, IWCompEdit, IWCompListbox, IWCompMemo, IWCompLabel,
-  IWHTMLTag;
+  IWHTMLTag, IWBaseComponent, IWBaseHTMLComponent, IWBaseHTML40Component,
+  IWCompExtCtrls,IWMimeTypes;
 
 type
   TFrmListaPedidos = class(TFrmBase)
@@ -32,6 +33,7 @@ type
     IMP_MSG: TIWMemo;
     BTN_IMPRIMIR: TIWButton;
     BTN_WHATSAPP: TIWButton;
+    IWModalWindow1: TIWModalWindow;
     procedure IWAppFormCreate(Sender: TObject);
     procedure BTN_LIMPARAsyncClick(Sender: TObject; EventParams: TStringList);
     procedure DATAINIAsyncExit(Sender: TObject; EventParams: TStringList);
@@ -42,6 +44,7 @@ type
     procedure IMP_EMAILHTMLTag(ASender: TObject; ATag: TIWHTMLTag);
     procedure IMP_MSGHTMLTag(ASender: TObject; ATag: TIWHTMLTag);
     procedure BTN_WHATSAPPAsyncClick(Sender: TObject; EventParams: TStringList);
+    procedure BTN_IMPRIMIRAsyncClick(Sender: TObject; EventParams: TStringList);
   private
     { Private declarations }
 
@@ -67,6 +70,51 @@ implementation
 uses ServerController;
 
 { TFrmListaPedidos }
+
+procedure TFrmListaPedidos.BTN_IMPRIMIRAsyncClick(Sender: TObject;
+  EventParams: TStringList);
+begin
+  inherited;
+
+   case IMP_TIPO_IMPRESSAO.ItemIndex of
+
+    0 : begin
+
+
+          IWModalWindow1.Reset;
+          IWModalWindow1.Autosize       := false;
+          IWModalWindow1.Title          := 'Meu Relatório';
+          IWModalWindow1.Draggable      := False;
+          IWModalWindow1.WindowWidth    := 100;
+          IWModalWindow1.WindowHeight   := 100;
+          IWModalWindow1.Src            := 'Sample.pdf';
+          IWModalWindow1.OnAsyncClick   := nil;
+          IWModalWindow1.Show;
+
+
+
+        end;
+
+
+   1 : begin
+
+         WebApplication.SendFile('Z:\IntraWeb\Cursos\ERPIntraweb\Bin\wwwroot\Sample.pdf',
+                                 false,
+                                 TIWMimeTypes.GetAsString(mtpdf),'')
+
+
+
+
+       end;
+
+
+
+
+
+   end;
+
+
+end;
 
 procedure TFrmListaPedidos.BTN_LIMPARAsyncClick(Sender: TObject;
   EventParams: TStringList);

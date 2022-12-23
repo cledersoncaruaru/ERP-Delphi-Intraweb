@@ -1,0 +1,25 @@
+unit uDmReport;
+
+interface
+
+uses
+  System.SysUtils, System.Classes;
+
+type
+  TDmReport = class(TDataModule)
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  DmReport: TDmReport;
+
+implementation
+
+{%CLASSGROUP 'Vcl.Controls.TControl'}
+
+{$R *.dfm}
+
+end.

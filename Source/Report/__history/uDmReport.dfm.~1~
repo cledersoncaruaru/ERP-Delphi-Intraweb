@@ -1,0 +1,5 @@
+object DmReport: TDmReport
+  Height = 260
+  Width = 655
+  PixelsPerInch = 96
+end

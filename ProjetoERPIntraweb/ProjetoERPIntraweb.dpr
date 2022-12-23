@@ -26,7 +26,8 @@ uses
   DataBase.Entity.Pedidos in '..\Source\DataBase\ENTITY\DataBase.Entity.Pedidos.pas',
   DataBase.DAO.Pedidos in '..\Source\DataBase\DAO\DataBase.DAO.Pedidos.pas',
   Buttons.Icons in '..\Source\BootsTrap\Componentes\Buttons\Buttons.Icons.pas',
-  Integracao.Whatsapp in '..\Source\Integracoes\Integracao.Whatsapp.pas';
+  Integracao.Whatsapp in '..\Source\Integracoes\Integracao.Whatsapp.pas',
+  uDmReport in '..\Source\Report\uDmReport.pas' {DmReport: TDataModule};
 
 {$R *.res}
 
