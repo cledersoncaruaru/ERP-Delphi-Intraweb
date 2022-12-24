@@ -52,11 +52,4 @@ object DmReport: TDmReport
     Left = 56
     Top = 80
   end
-  object DBRelatorio: TfrxDBDataset
-    UserName = 'DBRelatorio'
-    CloseDataSource = False
-    BCDToCurrency = False
-    Left = 56
-    Top = 136
-  end
 end
