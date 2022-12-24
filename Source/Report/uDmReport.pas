@@ -35,4 +35,13 @@ uses
 { TDmReport }
 
 
+{ TDmReport }
+
+function TDmReport.Get_Report_Unidades(Page: TObject; TipoRelatorio,
+  COD_UNIDADE, COD_STATUS, COD_DAV, COD_CLIENTE: LongInt; var Report: String;
+  Cache: Boolean): Boolean;
+begin
+//
+end;
+
 end.
