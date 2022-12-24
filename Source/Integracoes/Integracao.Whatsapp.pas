@@ -39,7 +39,7 @@ interface
   const
     BaseUrl_Api_Whats   = 'http://127.0.0.1:21465/api';
     secretKey           = 'THISISMYSECURETOKEN';
-    session             = 'DELPHIEINTRAWEB';
+    session             = 'DELPHIEINTRAWEB_xx';
 
 
 

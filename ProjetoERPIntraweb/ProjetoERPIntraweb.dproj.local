@@ -51,9 +51,9 @@
     <Transaction>2022/12/13 22:51:10.000.304,Z:\IntraWeb\Cursos\ERPIntraweb\ProjetoERPIntraweb\Unit1.pas=Z:\IntraWeb\Cursos\ERPIntraweb\Source\BootsTrap\Componentes\Buttons\Buttons.Icons.pas</Transaction>
     <Transaction>2022/12/14 00:29:59.000.128,=Z:\IntraWeb\Cursos\ERPIntraweb\Source\Integracoes\Integracao.Whatsapp.pas</Transaction>
     <Transaction>2022/12/14 00:48:10.000.998,=Z:\IntraWeb\Cursos\ERPIntraweb\Source\Integracoes\Integracao.Whatsapp.pas</Transaction>
-    <Transaction>2022/12/23 19:55:47.158,=Z:\IntraWeb\Cursos\ERPIntraweb\ProjetoERPIntraweb\Unit1.pas</Transaction>
-    <Transaction>2022/12/23 19:56:41.174,Z:\IntraWeb\Cursos\ERPIntraweb\Source\Report\uDmReport.pas=Z:\IntraWeb\Cursos\ERPIntraweb\ProjetoERPIntraweb\Unit1.pas</Transaction>
-    <Transaction>2022/12/23 19:56:41.174,Z:\IntraWeb\Cursos\ERPIntraweb\Source\Report\uDmReport.dfm=Z:\IntraWeb\Cursos\ERPIntraweb\ProjetoERPIntraweb\Unit1.dfm</Transaction>
+    <Transaction>2022/12/23 19:55:47.000.158,=Z:\IntraWeb\Cursos\ERPIntraweb\ProjetoERPIntraweb\Unit1.pas</Transaction>
+    <Transaction>2022/12/23 19:56:41.000.174,Z:\IntraWeb\Cursos\ERPIntraweb\Source\Report\uDmReport.pas=Z:\IntraWeb\Cursos\ERPIntraweb\ProjetoERPIntraweb\Unit1.pas</Transaction>
+    <Transaction>2022/12/23 19:56:41.000.174,Z:\IntraWeb\Cursos\ERPIntraweb\Source\Report\uDmReport.dfm=Z:\IntraWeb\Cursos\ERPIntraweb\ProjetoERPIntraweb\Unit1.dfm</Transaction>
   </Transactions>
 	<ProjectSortOrder AutoSort="0" SortType="0">
     <File Path="..\..\ERPIntraweb"/>

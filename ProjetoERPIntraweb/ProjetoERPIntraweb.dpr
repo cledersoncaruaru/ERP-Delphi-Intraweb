@@ -32,5 +32,13 @@ uses
 {$R *.res}
 
 begin
+//  TIWStartHSys.Execute(True);
+
+  {$IFDEF DEBUG}
   TIWStartHSys.Execute(True);
+  {$ELSE}
+  TIWStartHSys.Execute(false);
+  {$ENDIF}
+
+
 end.

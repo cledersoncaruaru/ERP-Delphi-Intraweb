@@ -38,10 +38,41 @@ implementation
 {$R *.dfm}
 
 procedure TIWUserSession.IWUserSessionBaseCreate(Sender: TObject);
+ var
+ Servidor, Usuario, Senha, Driver, Database : string;
+ Porta : LongInt;
 begin
 
+    Database  :=  ExtractFilePath(ParamStr(0))+ 'Files\Clientes\00000000000000\BD\DADOS.FDB';
+    Servidor  := '127.0.0.1';
+    Usuario   := 'SYSDBA';
+    Senha     := 'masterkey';
+    Porta     := 3050;
+    Driver    := 'FB';
 
- Conexao.Connected  := True;
+  Conexao.Connected := false;
+  Conexao.LoginPrompt := false;
+  Conexao.Params.Clear;
+  Conexao.Params.Add('Protocol=TCPIP');
+  Conexao.Params.Add('hostname='+ Servidor);
+  Conexao.Params.Add('user_name='+ Usuario);
+  Conexao.Params.Add('password='+ Senha);
+  Conexao.Params.Add('port='+ IntToStr(Porta));
+  Conexao.Params.Add('Database='+ Database);
+  Conexao.Params.Add('DriverID='+ Driver);
+
+
+   try
+
+   Conexao.Connected  := True;
+
+   except on E: Exception do
+
+    //Disparo para o telegram se der Erro
+
+
+   end;
+
 
 
 

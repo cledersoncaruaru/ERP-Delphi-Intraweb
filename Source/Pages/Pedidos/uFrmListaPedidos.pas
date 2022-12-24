@@ -268,7 +268,7 @@ begin
 
   // calback para as mensagens
 
-
+//
   RegisterCallBack('MyConfirmCallback', MyConfirmCallback);
   RegisterCallBack('MyPromptCallback', MyPromptCallback);
 
@@ -336,7 +336,6 @@ begin
   Msg := 'This is the callback. The selected button was: ' + SelectedButton;
   if Response then
     Msg := Msg + ', and the string entered was: ' + InputValue;
-
   WebApplication.ShowNotification(Msg, MsgType);
 end;
 

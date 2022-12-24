@@ -1,0 +1,36 @@
+program ProjetoERPIntraweb;
+
+uses
+  FastMM4,
+  IWRtlFix,
+  IWJclStackTrace,
+  IWJclDebug,
+  IWStartHSys,
+  uBase in '..\Source\base\uBase.pas' {FrmBase: TIWAppForm},
+  ServerController in 'ServerController.pas' {IWServerController: TIWServerControllerBase},
+  UserSessionUnit in 'UserSessionUnit.pas' {IWUserSession: TIWUserSessionBase},
+  uFrmLogin in '..\Source\uFrmLogin.pas' {FrmLogin: TIWAppForm},
+  uFrmDashBoard in '..\Source\uFrmDashBoard.pas' {FrmDashBoard: TIWAppForm},
+  uListaPessoa in '..\Source\Clientes\uListaPessoa.pas' {FrmListaPessoa: TIWAppForm},
+  DataBase.DAO.Pessoa in '..\Source\DataBase\DAO\DataBase.DAO.Pessoa.pas',
+  DataBase.BD.Funcoes in '..\Source\DataBase\DataBase.BD.Funcoes.pas',
+  uFrmCrudPessoa in '..\Source\Pessoa\uFrmCrudPessoa.pas' {FrmCrudPessoa: TIWAppForm},
+  Integracao.Telegram in '..\Source\Integracoes\Integracao.Telegram.pas',
+  DataBase.Entity.Pessoa in '..\Source\DataBase\ENTITY\DataBase.Entity.Pessoa.pas',
+  DataBase.Funcoes in '..\Source\Funcoes\DataBase.Funcoes.pas',
+  uFrmListaProduto in '..\Source\Pages\Produto\uFrmListaProduto.pas' {FrmListaProduto: TIWAppForm},
+  DataBase.Entity.Produto in '..\Source\DataBase\ENTITY\DataBase.Entity.Produto.pas',
+  DataBase.DAO.Produto in '..\Source\DataBase\DAO\DataBase.DAO.Produto.pas',
+  uFrmCrudProduto in '..\Source\Pages\Produto\uFrmCrudProduto.pas' {FrmCrudProduto: TIWAppForm},
+  uFrmListaPedidos in '..\Source\Pages\Pedidos\uFrmListaPedidos.pas' {FrmListaPedidos: TIWAppForm},
+  DataBase.Entity.Pedidos in '..\Source\DataBase\ENTITY\DataBase.Entity.Pedidos.pas',
+  DataBase.DAO.Pedidos in '..\Source\DataBase\DAO\DataBase.DAO.Pedidos.pas',
+  Buttons.Icons in '..\Source\BootsTrap\Componentes\Buttons\Buttons.Icons.pas',
+  Integracao.Whatsapp in '..\Source\Integracoes\Integracao.Whatsapp.pas',
+  uDmReport in '..\Source\Report\uDmReport.pas' {DmReport: TDataModule};
+
+{$R *.res}
+
+begin
+  TIWStartHSys.Execute(True);
+end.

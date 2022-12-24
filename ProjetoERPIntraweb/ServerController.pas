@@ -11,6 +11,9 @@ uses
 type
   TIWServerController = class(TIWServerControllerBase)
     procedure IWServerControllerBaseNewSession(ASession: TIWApplication);
+    procedure IWServerControllerBaseBind(const aHttpBindings,
+      aHttpsBindings: TStrings);
+    procedure IWServerControllerBaseConfig(Sender: TObject);
 
   private
     { Private declarations }
@@ -42,6 +45,57 @@ begin
 end;
 
 { TIWServerController }
+
+procedure TIWServerController.IWServerControllerBaseBind(const aHttpBindings,
+  aHttpsBindings: TStrings);
+begin
+
+  aHttpBindings.Clear;
+  aHttpsBindings.Clear;
+
+  {$IFDEF DEBUG}
+    aHttpBindings.Add('http://*:80/');
+  {$ELSE}
+    aHttpBindings.Add('http://erpcurso.gescomweb.com.br:80/');
+    aHttpBindings.Add('http://www.erpcurso.gescomweb.com.br:80/');
+
+    aHttpsBindings.Add('https://erpcurso.gescomweb.com.br:443/');
+    aHttpsBindings.Add('https://www.erpcurso.gescomweb.com.br:443/');
+
+  {$ENDIF}
+
+end;
+
+procedure TIWServerController.IWServerControllerBaseConfig(Sender: TObject);
+begin
+
+//    JavaScriptOptions.RenderjQuery := False;
+    SecurityOptions.CheckSameUA    := False;
+    SecurityOptions.CorsOrigin     := '*';
+    ExceptionLogger.Enabled        := True;
+
+
+
+
+    ExceptionLogger.FilePath :=  ExtractFilePath(ParamStr(0)) + '\files\LogError\';
+
+      if not DirectoryExists(ExceptionLogger.FilePath) then
+    forceDirectories(ExceptionLogger.FilePath);
+
+
+
+    SSLOptions.EnableACME    := True;
+
+  {$IFDEF DEBUG}
+    SSLOptions.NonSSLRequest := nsAccept;
+    SSLOptions.Port          := 0;
+  {$ELSE}
+    SSLOptions.NonSSLRequest := nsRedirect;
+    SSLOptions.Port          := 443;
+  {$ENDIF}
+
+
+end;
 
 procedure TIWServerController.IWServerControllerBaseNewSession(
   ASession: TIWApplication);
