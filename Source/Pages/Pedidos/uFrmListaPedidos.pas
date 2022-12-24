@@ -7,8 +7,8 @@ uses
    DataBase.DAO.Pedidos,
    Integracao.Whatsapp,
    System.DateUtils,
-
-
+   IWApplication,
+   IWTypes,
 
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, uBase, IWVCLComponent,
@@ -16,7 +16,7 @@ uses
   IWTemplateProcessorHTML, IWVCLBaseControl, IWBaseControl, IWBaseHTMLControl,
   IWControl, IWCompButton, IWCompEdit, IWCompListbox, IWCompMemo, IWCompLabel,
   IWHTMLTag, IWBaseComponent, IWBaseHTMLComponent, IWBaseHTML40Component,
-  IWCompExtCtrls,IWMimeTypes;
+  IWCompExtCtrls,IWMimeTypes, IWCompCheckbox;
 
 type
   TFrmListaPedidos = class(TFrmBase)
@@ -34,6 +34,12 @@ type
     BTN_IMPRIMIR: TIWButton;
     BTN_WHATSAPP: TIWButton;
     IWModalWindow1: TIWModalWindow;
+    BTN_MENSAGEM: TIWButton;
+    IWRadioGroup1: TIWRadioGroup;
+    edtMessage: TIWEdit;
+    IWLabel2: TIWLabel;
+    chkTitle: TIWCheckBox;
+    edtTitle: TIWEdit;
     procedure IWAppFormCreate(Sender: TObject);
     procedure BTN_LIMPARAsyncClick(Sender: TObject; EventParams: TStringList);
     procedure DATAINIAsyncExit(Sender: TObject; EventParams: TStringList);
@@ -45,6 +51,7 @@ type
     procedure IMP_MSGHTMLTag(ASender: TObject; ATag: TIWHTMLTag);
     procedure BTN_WHATSAPPAsyncClick(Sender: TObject; EventParams: TStringList);
     procedure BTN_IMPRIMIRAsyncClick(Sender: TObject; EventParams: TStringList);
+    procedure BTN_MENSAGEMAsyncClick(Sender: TObject; EventParams: TStringList);
   private
     { Private declarations }
 
@@ -54,6 +61,14 @@ type
 
       procedure Prc_Crud(EventParams: TStringList);
       Procedure Listar(aParams: TStrings; out aResult: String);
+
+      procedure ShowDialogs(const Msg, Title: string; Option: Integer);
+
+
+      procedure MyConfirmCallback(EventParams: TStringList);
+      procedure MyPromptCallback(EventParams: TStringList);
+
+
 
 
   public
@@ -98,9 +113,12 @@ begin
 
    1 : begin
 
-         WebApplication.SendFile('Z:\IntraWeb\Cursos\ERPIntraweb\Bin\wwwroot\Sample.pdf',
-                                 false,
-                                 TIWMimeTypes.GetAsString(mtpdf),'')
+//         WebApplication.SendFile('Z:\IntraWeb\Cursos\ERPIntraweb\Bin\wwwroot\Sample.pdf',
+//                                 false,
+//                                 TIWMimeTypes.GetAsString(mtpdf),'');
+
+
+          WebApplication.CallBackResponse.AddJavaScriptToExecute('window.open("\Sample.pdf",''"_blank"'');');
 
 
 
@@ -121,6 +139,25 @@ procedure TFrmListaPedidos.BTN_LIMPARAsyncClick(Sender: TObject;
 begin
   inherited;
 WebApplication.ExecuteJS('fncclear();');
+end;
+
+procedure TFrmListaPedidos.BTN_MENSAGEMAsyncClick(Sender: TObject;
+  EventParams: TStringList);
+var
+  aTitle: string;
+begin
+  aTitle := edtTitle.Text;
+  if not chkTitle.Checked then
+    aTitle := '';  // empty title is not shown in dialog!
+  ShowDialogs(edtMessage.Text, aTitle, IWRadioGroup1.ItemIndex + 1);
+
+
+
+//  WebApplication.ShowMessage('teste de mensagem');
+
+//WebApplication.ShowConfirm('Mensagem',)
+
+
 end;
 
 procedure TFrmListaPedidos.BTN_PESQUISARAsyncClick(Sender: TObject;
@@ -229,6 +266,16 @@ begin
   RegisterCallBack('Crud', Prc_Crud);
 
 
+  // calback para as mensagens
+
+
+  RegisterCallBack('MyConfirmCallback', MyConfirmCallback);
+  RegisterCallBack('MyPromptCallback', MyPromptCallback);
+
+
+
+
+
 end;
 
 procedure TFrmListaPedidos.Listar(aParams: TStrings; out aResult: String);
@@ -241,6 +288,56 @@ begin
   Get_Lista_Pedidos(0,0,vDATAINI,vDATAFIM,0,0, aParams,aResult);
 
 
+end;
+
+procedure TFrmListaPedidos.MyConfirmCallback(EventParams: TStringList);
+var
+  Response: Boolean;
+  SelectedButton: string;
+  MsgType: TIWNotifyType;
+begin
+  // Confirm callback has 1 main parameters:
+  // RetValue (Boolean), indicates if the first button (Yes/OK/custom) was choosen
+  Response := SameText(EventParams.Values['RetValue'], 'True');
+  if Response then begin
+    SelectedButton := 'Yes';
+    MsgType := ntSuccess;
+  end
+  else begin
+    SelectedButton := 'No';
+    MsgType := ntError;
+  end;
+  WebApplication.ShowNotification('This is the callback. ' +
+                                  'The selected button was: ' + SelectedButton,
+                                  MsgType);
+end;
+
+procedure TFrmListaPedidos.MyPromptCallback(EventParams: TStringList);
+var
+  Response: Boolean;
+  InputValue: string;
+  SelectedButton: string;
+  MsgType: TIWNotifyType;
+  Msg: string;
+begin
+  // Prompt callback has 2 main parameters:
+  // RetValue (Boolean), indicates if the first button (Yes/OK/custom) was choosen
+  // InputStr, contains the string entered in the input box
+  Response := SameText(EventParams.Values['RetValue'], 'True');
+  InputValue := EventParams.Values['InputStr'];
+  if Response then begin
+    SelectedButton := 'OK';
+    MsgType := ntSuccess;
+  end
+  else begin
+    SelectedButton := 'Cancel';
+    MsgType := ntError;
+  end;
+  Msg := 'This is the callback. The selected button was: ' + SelectedButton;
+  if Response then
+    Msg := Msg + ', and the string entered was: ' + InputValue;
+
+  WebApplication.ShowNotification(Msg, MsgType);
 end;
 
 procedure TFrmListaPedidos.Prc_Crud(EventParams: TStringList);
@@ -289,6 +386,17 @@ begin
 
 
 
+end;
+
+procedure TFrmListaPedidos.ShowDialogs(const Msg, Title: string;
+  Option: Integer);
+begin
+   case Option of
+    1: WebApplication.ShowMessage(Msg);
+    2: WebApplication.ShowConfirm(Msg, 'MyConfirmCallback', Title, 'Yes', 'No');
+    3: WebApplication.ShowPrompt(Msg,  'MyPromptCallback', Title, 'This is the default value');
+    4: WebApplication.ShowNotification(Msg);
+  end;
 end;
 
 end.

@@ -4,7 +4,7 @@ inherited FrmListaPedidos: TFrmListaPedidos
   ExplicitWidth = 1123
   ExplicitHeight = 475
   PixelsPerInch = 96
-  DesignLeft = -191
+  DesignLeft = -98
   DesignTop = 2
   inherited BTN_POST: TIWButton
     Left = 96
@@ -177,6 +177,78 @@ inherited FrmListaPedidos: TFrmListaPedidos
     Color = clBtnFace
     FriendlyName = 'BTN_WHATSAPP'
     OnAsyncClick = BTN_WHATSAPPAsyncClick
+  end
+  object BTN_MENSAGEM: TIWButton [15]
+    Left = 513
+    Top = 268
+    Width = 120
+    Height = 30
+    Caption = 'MENSAGEM'
+    Color = clBtnFace
+    FriendlyName = 'BTN_MENSAGEM'
+    OnAsyncClick = BTN_MENSAGEMAsyncClick
+  end
+  object IWRadioGroup1: TIWRadioGroup [16]
+    Left = 240
+    Top = 218
+    Width = 313
+    Height = 88
+    SubmitOnAsyncEvent = True
+    RawText = False
+    Editable = True
+    FriendlyName = 'IWRadioGroup1'
+    ItemIndex = 0
+    Items.Strings = (
+      'Alert (ShowMessage)'
+      'Confirmation (ShowConfirm)'
+      'Prompt (ShowPrompt)'
+      'Notification (ShowNotification)')
+    Layout = glVertical
+    TabOrder = -1
+  end
+  object edtMessage: TIWEdit [17]
+    Left = 216
+    Top = 191
+    Width = 449
+    Height = 21
+    StyleRenderOptions.RenderBorder = False
+    FriendlyName = 'edtMessage'
+    SubmitOnAsyncEvent = True
+    TabOrder = 1
+    Text = 'Sua Mensagem '
+  end
+  object IWLabel2: TIWLabel [18]
+    Left = 216
+    Top = 168
+    Width = 58
+    Height = 17
+    HasTabOrder = False
+    FriendlyName = 'IWLabel1'
+    Caption = 'Message'
+  end
+  object chkTitle: TIWCheckBox [19]
+    Left = 240
+    Top = 312
+    Width = 233
+    Height = 21
+    Caption = 'Also add Title to the dialog window'
+    Editable = True
+    SubmitOnAsyncEvent = True
+    Style = stNormal
+    TabOrder = 2
+    Checked = False
+    FriendlyName = 'chkTitle'
+  end
+  object edtTitle: TIWEdit [20]
+    Left = 240
+    Top = 339
+    Width = 225
+    Height = 21
+    StyleRenderOptions.RenderBorder = False
+    FriendlyName = 'edtTitle'
+    SubmitOnAsyncEvent = True
+    TabOrder = 3
+    Text = 'Titulo da Mensagem'
   end
   object IWModalWindow1: TIWModalWindow
     Left = 872
